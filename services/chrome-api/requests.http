@@ -1,0 +1,359 @@
+@host = http://0.0.0.0
+@token = 10f37828-cf89-11ea-ab34-0242ac140004
+
+### Seat Ibiza
+POST {{host}}/run
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "seat-ibiza",
+    "actions": [
+        {
+            "type": "goto",
+            "payload": {
+                "url": "https://forms.seat.nl/site/brochure/download?mc=ibiza",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "interceptDownloadUrl",
+            "payload": {
+                "selector": "#content_2_Downloadlijst_listDownloads_linkDownload_1",
+                "timeout": 1000
+            }
+        }
+    ]
+}
+
+### Opel Corsa
+POST {{host}}/run
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "opel-corsa",
+    "actions": [
+        {
+            "type": "goto",
+            "payload": {
+                "url": "https://www.opel.nl/personenwagens/corsa-2019/brochure-en-prijslijst.html",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "select",
+            "payload": {
+                "selector": "a[title=\"BEKIJK PRIJSLIJST\"]",
+                "attribute": "href"
+            }
+        },
+        {
+            "type": "goto",
+            "payload": {
+                "url": "${actions[1].response.data}",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "select",
+            "payload": {
+                "selector": "#embed-container-publitas-embed-zy3lxwfhiu > iframe",
+                "attribute": "src"
+            }
+        },
+        {
+            "type": "goto",
+            "payload": {
+                "url": "${actions[3].response.data}",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "click",
+            "payload": {
+                "selector": "button[aria-label=\"Openen Opel - Prijslijst Opel Corsa 2020\"]",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "select",
+            "payload": {
+                "selector": "a[data-href=\"download_pdf\"][name=\"download_pdf\"]",
+                "attribute": "href"
+            }
+        }
+    ]
+}
+
+### Renault Megane
+POST {{host}}/run
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "renault-megane",
+    "actions": [
+        {
+            "type": "goto",
+            "payload": {
+                "url": "https://www.renault.nl/brochures-prijslijsten.html",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "select",
+            "payload": {
+                "selector": ".EditorialContentZone > .FeaturePromoWithCopy:nth-of-type(3) > .Component5v0:nth-of-type(3) .AemRTE > ul > li:nth-of-type(2) > a",
+                "attribute": "href"
+            }
+        }
+    ]
+}
+
+### Renault Clio
+POST {{host}}/run
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "renault-clio",
+    "actions": [
+        {
+            "type": "goto",
+            "payload": {
+                "url": "https://www.renault.nl/personenautos/clio/prijzen.html",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "select",
+            "payload": {
+                "selector": "a[title=\"Bekijk prijslijst\"]",
+                "attribute": "href"
+            }
+        }
+    ]
+}
+
+### Volkswagen Polo
+POST {{host}}/run
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "volkswagen-polo",
+    "actions": [
+        {
+            "type": "goto",
+            "payload": {
+                "url": "https://forms.volkswagen.nl/site/brochure/download?mc=Polo",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "interceptDownloadUrl",
+            "payload": {
+                "selector": "#content_2_Downloadlijst_listDownloads_linkDownload_0",
+                "timeout": 1000
+            }
+        }
+    ]
+}
+
+### Volkswagen Golf
+POST {{host}}/run
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "volkswagen-golf",
+    "actions": [
+        {
+            "type": "goto",
+            "payload": {
+                "url": "https://forms.volkswagen.nl/site/brochure/download?mc=Golf",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "interceptDownloadUrl",
+            "payload": {
+                "selector": "#content_2_Downloadlijst_listDownloads_linkDownload_0",
+                "timeout": 1000
+            }
+        }
+    ]
+}
+
+### Ford Focus
+POST {{host}}/run
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "ford-focus",
+    "actions": [
+        {
+            "type": "goto",
+            "payload": {
+                "url": "https://www.ford.nl/alle-modellen/focus?vehicleNavCategory=all%20cars#overlay/content/overlays/download-a-brochure/focus",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "select",
+            "payload": {
+                "selector": "a[data-download-id=\"pricelistvehiclebrandpriclistvehiclenameplate\"]",
+                "attribute": "href",
+                "timeout": 1000
+            }
+        }
+    ]
+}
+
+### Ford Fiesta
+POST {{host}}/run
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "ford-fiesta",
+    "actions": [
+        {
+            "type": "goto",
+            "payload": {
+                "url": "https://www.ford.nl/alle-modellen/fiesta?vehicleNavCategory=all%20cars#overlay/content/overlays/download-a-brochure/new-fiesta",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "select",
+            "payload": {
+                "selector": "a[data-download-id=\"pricelistvehiclebrandpriclistvehiclenameplate\"]",
+                "attribute": "href",
+                "timeout": 1000
+            }
+        }
+    ]
+}
+
+### Peugeot 208
+POST {{host}}/run
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "peugeot-208",
+    "actions": [
+        {
+            "type": "goto",
+            "payload": {
+                "url": "https://www.peugeot.nl/brochure-aanvragen/",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "click",
+            "payload": {
+                "selector": "a[class=\"psac_noselect\"]",
+                "timeout": 100
+            }
+        },
+        {
+            "type": "click",
+            "payload": {
+                "selector": "div[class=\"sb-custom\"][data-id=\"0\"]",
+                "timeout": 100
+            }
+        },
+        {
+            "type": "click",
+            "payload": {
+                "selector": "li[data-value=\"Nieuwe 208\"]",
+                "timeout": 100
+            }
+        },
+        {
+            "type": "click",
+            "payload": {
+                "selector": "div[class=\"sb-custom\"][data-id=\"1\"]",
+                "timeout": 100
+            }
+        },
+        {
+            "type": "click",
+            "payload": {
+                "selector": "li[data-value=\"1PP2A5FMZJB0A0B6\"]",
+                "timeout": 100
+            }
+        },
+        {
+            "type": "select",
+            "payload": {
+                "selector": "a[data-name=\"Prijzen en specificaties Nieuwe 208\"]",
+                "attribute": "href"
+            }
+        }
+    ]
+}
+
+### Peugeot 308
+POST {{host}}/run
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "peugeot-308",
+    "actions": [
+        {
+            "type": "goto",
+            "payload": {
+                "url": "https://www.peugeot.nl/brochure-aanvragen/",
+                "timeout": 1000
+            }
+        },
+        {
+            "type": "click",
+            "payload": {
+                "selector": "a[class=\"psac_noselect\"]",
+                "timeout": 100
+            }
+        },
+        {
+            "type": "click",
+            "payload": {
+                "selector": "div[class=\"sb-custom\"][data-id=\"0\"]",
+                "timeout": 100
+            }
+        },
+        {
+            "type": "click",
+            "payload": {
+                "selector": "li[data-value=\"308\"]",
+                "timeout": 100
+            }
+        },
+        {
+            "type": "click",
+            "payload": {
+                "selector": "div[class=\"sb-custom\"][data-id=\"1\"]",
+                "timeout": 100
+            }
+        },
+        {
+            "type": "click",
+            "payload": {
+                "selector": "li[data-value=\"1PT9A5NNNKB0BUF0\"]",
+                "timeout": 100
+            }
+        },
+        {
+            "type": "select",
+            "payload": {
+                "selector": "a[data-name=\"Prijzen en specificaties 308\"]",
+                "attribute": "href"
+            }
+        }
+    ]
+}

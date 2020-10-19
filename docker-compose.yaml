@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  chrome-api:
+    image: buildkite/puppeteer
+    env_file:
+      - ./environment/chrome-api.development.env
+    environment:
+      - PORT=3000
+    working_dir: /app
+    volumes:
+      - ./services/chrome-api:/app
+    ports:
+      - 80:3000
+    command: ./entrypoint.sh
