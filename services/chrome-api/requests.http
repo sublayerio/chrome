@@ -1,6 +1,10 @@
 @host = http://0.0.0.0
 @token = 10f37828-cf89-11ea-ab34-0242ac140004
 
+@host = https://api.lesautodeal.nl/chrome/v1
+@token = 21621c5d-d266-4e33-abfd-c6d9b1316d50
+
+
 ### Seat Ibiza
 POST {{host}}/run
 Content-Type: application/json
